@@ -45,13 +45,23 @@ Vue.component('search-bar', {
             }
             else if (e.key === 'Enter' && this.hasFocus) {
                 e.preventDefault();
-
                 const query = this.query.trim();
 
                 if (!query) {
                     // warn
                 } else {
-                    // use validator.js
+                    if (validator.isURL(query, { require_protocol: false })) {
+                        // check for protocol
+                        const hasProtocol = validator.isURL(query, { require_protocol: true })
+                        console.log(hasProtocol)
+                        if (hasProtocol) {
+                            window.location.replace(query)
+                        } else {
+                            window.location.replace(`http://${query}`)
+                        }
+                    } else {
+                        console.log(query)
+                    }
                     // const url = "https://www.google.com/search?q=" + userInput.trim().split(" ").join("+");
                 }
 
