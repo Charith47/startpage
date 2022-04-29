@@ -1,6 +1,17 @@
 // create input element and add styles
 const input = document.createElement('input')
-input.className = `appearance-none rounded leading-tight py-2 px-4 bg-gray-700 text-gray-100 focus:outline-none border-2 border-gray-700 focus:border-indigo-300`
+input.className =
+    `w-56 appearance-none
+    rounded
+    leading-tight
+    py-2 px-4
+    bg-gray-700 text-gray-100
+    border-2 border-gray-700 outline-none
+    transition-all ease-in-out delay-150 duration-300
+    focus:border-indigo-300
+    focus:w-full
+`
+
 input.setAttribute("ref", "input")
 input.setAttribute("type", "text")
 input.setAttribute("placeholder", "Speak your mind...")
@@ -37,10 +48,11 @@ Vue.component('search-bar', {
 
                 const query = this.query.trim();
 
-                if(!query){
+                if (!query) {
                     // warn
-                } else{
+                } else {
                     // use validator.js
+                    // const url = "https://www.google.com/search?q=" + userInput.trim().split(" ").join("+");
                 }
 
             }
