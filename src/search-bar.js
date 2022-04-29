@@ -1,5 +1,7 @@
 // create input element and add styles
 const input = document.createElement('input')
+input.autofocus = true;
+
 input.className =
     `w-56 appearance-none
     rounded
@@ -51,7 +53,7 @@ Vue.component('search-bar', {
                     // warn
                 } else {
                     if (validator.isURL(query, { require_protocol: false })) {
-                        // check for protocol
+                        // TODO:add whitelist
                         const hasProtocol = validator.isURL(query, { require_protocol: true })
                         console.log(hasProtocol)
                         if (hasProtocol) {
