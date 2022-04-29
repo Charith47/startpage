@@ -1,5 +1,6 @@
 setTimeout(() => {
     const date = new Date();
+    let day = date.toLocaleDateString('en-US', { weekday: 'long' });
     let hour = date.getHours();
     let minute = date.getMinutes();
     let session = "AM";
@@ -14,7 +15,7 @@ setTimeout(() => {
     hour = (hour < 10) ? `0${hour}` : hour;
     minute = (minute < 10) ? `0${minute}` : minute;
 
-    const time = `${hour}:${minute} ${session}`
+    const time = `${day} ${hour}:${minute} ${session}`
     document.getElementById('clock').innerHTML = time;
     console.log(time)
 }, 1000);
