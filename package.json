@@ -4,7 +4,7 @@
   "description": "A simple startpage",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && postcss ./src/imports.css -o ./dist/styles.css && cpy ./src !./src/*.css dist --flat",
+    "build": "rimraf dist && tailwindcss -i ./src/imports.css -o ./dist/styles.css && cpy ./src !./src/*.css dist --flat",
     "serve": "concurrently \"tailwindcss -i ./src/imports.css -o ./src/styles.css --watch\" \"live-server ./src --port=8082 --no-css-inject\""
   },
   "keywords": [
@@ -19,7 +19,6 @@
     "autoprefixer": "^10.4.5",
     "concurrently": "^7.1.0",
     "cpy-cli": "^4.1.0",
-    "postcss-cli": "^9.1.0",
     "rimraf": "^3.0.2",
     "tailwindcss": "^3.0.24"
   }
