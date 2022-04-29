@@ -16,6 +16,36 @@ Vue.component('search-bar', {
             hasFocus: false,
         }
     },
+    created() {
+        document.addEventListener("keydown", this.handleShortcuts);
+    },
+    methods: {
+        handleShortcuts(e) {
+            if (e.key === '/' && !this.hasFocus) {
+                e.preventDefault();
+                this.$refs.input.focus();
+            }
+            else if (e.key === 'Escape' && this.hasFocus) {
+                e.preventDefault();
+                this.$nextTick(() => {
+                    this.$refs.input.value = "";
+                    this.$refs.input.blur();
+                });
+            }
+            else if (e.key === 'Enter' && this.hasFocus) {
+                e.preventDefault();
+
+                const query = this.query.trim();
+
+                if(!query){
+                    // warn
+                } else{
+                    // use validator.js
+                }
+
+            }
+        }
+    },
     template: input.outerHTML
 })
 
