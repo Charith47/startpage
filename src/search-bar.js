@@ -74,7 +74,7 @@ Vue.component('search-bar', {
 })
 
 // append vue
-new Vue({ el: '#vue-searchbar' })
+new Vue({ el: '#vue' })
 
 // shortcuts
 // ESC, / and Enter
