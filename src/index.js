@@ -1,4 +1,4 @@
-setTimeout(() => {
+function currentTime() {
     const date = new Date();
     let day = date.toLocaleDateString('en-US', { weekday: 'long' });
     let hour = date.getHours();
@@ -26,4 +26,8 @@ setTimeout(() => {
     const time = `${day} ${hour}:${minute} ${session}`
     document.getElementById('clock').innerHTML = time;
     document.getElementById('greeting').innerHTML = greeting;
-}, 1000);
+
+    setTimeout(function () { currentTime() }, 1000);
+}
+
+currentTime();
