@@ -1,29 +1,26 @@
-// create input element and add styles
-const input = document.createElement('input')
-input.autofocus = true;
+Vue.component('tiles', {
+    data() {
+        return {
+            links: ["https://www.facebook.com", "https://www.reddit.com", "https://www.instagram.com", "https://www.youtube.com"]
+        }
+    },
+    methods: {
 
-input.className =
-    `w-56 appearance-none
-    rounded
-    leading-tight
-    py-2 px-4
-    bg-gray-700 text-gray-100
-    border-2 border-gray-700 outline-none
-    transition-all ease-in-out delay-150 duration-300
-    focus:border-indigo-300
-    focus:w-full
-`
+    },
+    // FIXME: gap issue
+    template:
+        `<div class="grid grid-cols-4 gap-4">
+            <div
+                class="transition-all ease-in-out delay-50 duration-300 hover:scale-110 bg-slate-800 hover:bg-slate-600 rounded px-6 py-8 ring-1 ring-slate-900/5 shadow-md hover:shadow-xl"
+                v-for="link in links" :key="link"
+            >
+                <span class="text-lg text-white"><a :href="link">link text</a></span>
+            </div>
+        </div>`
+})
 
-input.setAttribute("ref", "input")
-input.setAttribute("type", "text")
-input.setAttribute("placeholder", "Speak your mind...")
-input.setAttribute("v-model", "query")
-input.setAttribute("v-on:focus", "hasFocus = true")
-input.setAttribute("v-on:blur", "hasFocus = false")
-
-// Create component <search-bar>
 Vue.component('search-bar', {
-    data: function () {
+    data() {
         return {
             query: "",
             hasFocus: false,
@@ -62,6 +59,7 @@ Vue.component('search-bar', {
                             window.location.replace(`http://${query}`)
                         }
                     } else {
+                        // TODO: select search engine
                         console.log(query)
                     }
                     // const url = "https://www.google.com/search?q=" + userInput.trim().split(" ").join("+");
@@ -70,11 +68,26 @@ Vue.component('search-bar', {
             }
         }
     },
-    template: input.outerHTML
+    template:
+        `<div>
+            <input
+                class="w-56
+                appearance-none rounded
+                leading-tight
+                py-2 px-4
+                bg-gray-700 text-gray-100
+                border-2 border-gray-700 outline-none
+                transition-all ease-in-out delay-150 duration-300
+                focus:border-indigo-300 focus:w-full"
+                ref="input"
+                type="text"
+                placeholder="Speak your mind..."
+                v-model="query"
+                @focus="hasFocus = true"
+                @blur="hasFocus = false"
+                autofocus
+            >
+        </div>`
 })
 
-// append vue
 new Vue({ el: '#vue' })
-
-// shortcuts
-// ESC, / and Enter
