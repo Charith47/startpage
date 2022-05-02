@@ -7,11 +7,10 @@ Vue.component('tiles', {
     methods: {
 
     },
-    // FIXME: gap issue
     template:
         `<div class="grid grid-cols-4 gap-4">
             <div
-                class="transition-all ease-in-out delay-50 duration-300 hover:scale-110 bg-slate-800 hover:bg-slate-600 rounded px-6 py-8 ring-1 ring-slate-900/5 shadow-md hover:shadow-xl"
+                class="transition-all ease-in-out delay-50 duration-300 hover:scale-110 bg-slate-800 hover:bg-slate-600 rounded py-8 ring-1 ring-slate-900/5 shadow-md hover:shadow-xl"
                 v-for="link in links" :key="link"
             >
                 <span class="text-lg text-white"><a :href="link">link text</a></span>
